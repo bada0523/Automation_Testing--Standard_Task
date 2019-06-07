@@ -61,20 +61,20 @@ namespace MarsFramework.Config {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to D:\GitHub\MarsFramework\MarsQA-Copetition-Stage\MarsFramework\ExcelData\TestData.xlsx.
+        /// </summary>
+        internal static string _1x {
+            get {
+                return ResourceManager.GetString("1x", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 2.
         /// </summary>
         internal static string Browser {
             get {
                 return ResourceManager.GetString("Browser", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to D:\GitHub\MarsFramework\MarsFramework\ExcelData\TestData.xlsx.
-        /// </summary>
-        internal static string ExcelPath {
-            get {
-                return ResourceManager.GetString("ExcelPath", resourceCulture);
             }
         }
         
@@ -88,7 +88,7 @@ namespace MarsFramework.Config {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to D:\GitHub\MarsFramework\MarsFramework\TestReports\MarsReports.html.
+        ///   Looks up a localized string similar to D:\GitHub\MarsFramework\MarsQA-Copetition-Stage\MarsFramework\TestReports\MarsReports.html.
         /// </summary>
         internal static string ReportPath {
             get {
@@ -97,7 +97,7 @@ namespace MarsFramework.Config {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to D:\GitHub\MarsFramework\MarsFramework\Config\XMLFile.xml.
+        ///   Looks up a localized string similar to D:\GitHub\MarsFramework\MarsQA-Copetition-Stage\MarsFramework\Config\XMLFile.xml.
         /// </summary>
         internal static string ReportXMLPath {
             get {
@@ -106,7 +106,7 @@ namespace MarsFramework.Config {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to D:\GitHub\MarsFramework\MarsFramework\TestReports\Screenshots\.
+        ///   Looks up a localized string similar to D:\GitHub\MarsFramework\MarsQA-Copetition-Stage\MarsFramework\TestReports\Screenshots.
         /// </summary>
         internal static string ScreenShotPath {
             get {

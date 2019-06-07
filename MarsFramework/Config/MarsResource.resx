@@ -117,24 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="1x" xml:space="preserve">
+    <value>D:\GitHub\MarsFramework\MarsQA-Copetition-Stage\MarsFramework\ExcelData\TestData.xlsx</value>
+  </data>
   <data name="Browser" xml:space="preserve">
     <value>2</value>
     <comment>1 for firefox and 2 for Chrome</comment>
-  </data>
-  <data name="ExcelPath" xml:space="preserve">
-    <value>D:\GitHub\MarsFramework\MarsFramework\ExcelData\TestData.xlsx</value>
   </data>
   <data name="IsLogin" xml:space="preserve">
     <value>true</value>
     <comment>If true Login, else Register</comment>
   </data>
   <data name="ReportPath" xml:space="preserve">
-    <value>D:\GitHub\MarsFramework\MarsFramework\TestReports\MarsReports.html</value>
+    <value>D:\GitHub\MarsFramework\MarsQA-Copetition-Stage\MarsFramework\TestReports\MarsReports.html</value>
   </data>
   <data name="ReportXMLPath" xml:space="preserve">
-    <value>D:\GitHub\MarsFramework\MarsFramework\Config\XMLFile.xml</value>
+    <value>D:\GitHub\MarsFramework\MarsQA-Copetition-Stage\MarsFramework\Config\XMLFile.xml</value>
   </data>
   <data name="ScreenShotPath" xml:space="preserve">
-    <value>D:\GitHub\MarsFramework\MarsFramework\TestReports\Screenshots\</value>
+    <value>D:\GitHub\MarsFramework\MarsQA-Copetition-Stage\MarsFramework\TestReports\Screenshots</value>
   </data>
 </root>
