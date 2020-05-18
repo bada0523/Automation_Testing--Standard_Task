@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MarsFramework.Pages
@@ -18,42 +19,50 @@ namespace MarsFramework.Pages
 
         #region  Initialize Web Elements 
         //Finding the Join 
-        [FindsBy(How = How.XPath, Using = "//*[@id='home']/div/div/div[1]/div/button")]
+        [FindsBy(How = How.XPath, Using = "//div[@class='right item']//button[1]")]
         private IWebElement Join { get; set; }
 
         //Identify FirstName Textbox
-        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/div/form/div[1]/input")]
+        [FindsBy(How = How.XPath, Using = "(//div[@class='field  ']//input)[1]")]
         private IWebElement FirstName { get; set; }
 
         //Identify LastName Textbox
-        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/div/form/div[2]/input")]
+        [FindsBy(How = How.XPath, Using = "(//div[@class='field  ']//input)[2]")]
         private IWebElement LastName { get; set; }
 
         //Identify Email Textbox
-        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/div/form/div[3]/input")]
+        [FindsBy(How = How.XPath, Using = "(//div[@class='field  ']//input)[3]")]
         private IWebElement Email { get; set; }
 
         //Identify Password Textbox
-        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/div/form/div[4]/input")]
+        [FindsBy(How = How.XPath, Using = "(//div[@class='field  ']//input)[4]")]
         private IWebElement Password { get; set; }
 
         //Identify Confirm Password Textbox
-        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/div/form/div[5]/input")]
+        [FindsBy(How = How.XPath, Using = "(//input[@type='password'])[2]")]
         private IWebElement ConfirmPassword { get; set; }
 
         //Identify Term and Conditions Checkbox
-        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/div/form/div[6]/div/div/input")]
+        [FindsBy(How = How.XPath, Using = "//div[@class='ui checkbox ']//input[1]")]
         private IWebElement Checkbox { get; set; }
 
         //Identify join button
-        [FindsBy(How = How.XPath, Using = "//*[@id='submit-btn']")]
+        [FindsBy(How = How.XPath, Using = "(//div[@class='field']//div)[2]")]
         private IWebElement JoinBtn { get; set; }
+
+        //Identify LogOut Button
+        [FindsBy(How = How.XPath, Using = "//a[@class='item']//button[1]")]
+        private IWebElement logOutBtn { get; set; }
         #endregion
 
-        internal void register()
+        internal void Registration()
         {
             //Populate the excel data
             GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "SignUp");
+            Thread.Sleep(1000);
+            //Click on LougOut Button
+            logOutBtn.Click();
+            Thread.Sleep(1000);
             //Click on Join button
             Join.Click();
 

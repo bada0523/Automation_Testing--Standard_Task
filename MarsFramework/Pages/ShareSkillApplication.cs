@@ -1,6 +1,7 @@
 ﻿using MarsFramework.Global;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
 using RelevantCodes.ExtentReports;
 using System;
 using System.Collections.Generic;
@@ -20,28 +21,28 @@ namespace MarsFramework.Pages
 
         #region  Initialize Web Elements 
         //Click the button Share Skill
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profile-section']/div/section[1]/div/div[2]/a")]
+        [FindsBy(How = How.XPath, Using = "//a[@href='/Home/ServiceListing']")]
         private IWebElement shareSkillBtn { get; set; }
         //Add Title
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[1]/div/div[2]/div/div[1]/input")]
+        [FindsBy(How = How.XPath, Using = "(//div[@class='field  ']//input)[1]")]
         private IWebElement title { get; set; }
         //Add Description
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[2]/div/div[2]/div[1]/textarea")]
+        [FindsBy(How = How.XPath, Using = "//div[@class='field  ']//textarea[1]")]
         private IWebElement description { get; set; }
         //Add Category
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[3]/div[2]/div/div[1]/select")]
+        [FindsBy(How = How.XPath, Using = "//div[contains(@class,'five wide')]//select[1]")]
         private IWebElement category { get; set; }
-        //Choose Category dropdown
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[3]/div[2]/div/div[1]/select/option[6]")]
-        private IWebElement categoryOpts { get; set; }
+        //Choose SubCategory
+        [FindsBy(How = How.XPath, Using = "(//div[@class='fields']//select)[2]")]
+        private IWebElement subCategory { get; set; }
         //Add Tag
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[4]/div[2]/div/div/div/div/input")]
+        [FindsBy(How = How.XPath, Using = "(//div[@class='ReactTags__tagInput']//input)[1]")]
         private IWebElement tag { get; set; }
         //Add Service Type
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[5]/div[2]/div[1]/div[1]/div/input")]
+        [FindsBy(How = How.XPath, Using = "(//div[contains(@class,'ui radio')]//input)[2]")]
         private IWebElement serviceType { get; set; }
         //Add Location Type
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[6]/div[2]/div/div[1]/div/input")]
+        [FindsBy(How = How.XPath, Using = "(//div[contains(@class,'ui radio')]//input)[3]")]
         private IWebElement locationType { get; set; }
         //Add Start date
         [FindsBy(How = How.CssSelector, Using = "#service-listing-section > div.ui.container > div > form > div:nth-child(7) > div.twelve.wide.column > div > div:nth-child(1) > div:nth-child(2) > input[type='date']")]
@@ -50,43 +51,31 @@ namespace MarsFramework.Pages
         [FindsBy(How = How.CssSelector, Using = "#service-listing-section > div.ui.container > div > form > div:nth-child(7) > div.twelve.wide.column > div > div:nth-child(1) > div:nth-child(4) > input[type='date']")]
         private IWebElement endDate { get; set; }
         //Add Skill Trade
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[8]/div[2]/div/div[1]/div/input")]
+        [FindsBy(How = How.XPath, Using = "(//div[contains(@class,'ui radio')]//input)[5]")]
         private IWebElement skillTrade { get; set; }
         //Add Skill Exchange
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[8]/div[4]/div/div/div/div/div/input")]
+        [FindsBy(How = How.XPath, Using = "(//div[@class='ReactTags__tagInput']//input)[2]")]
         private IWebElement skillExchange { get; set; }
         //Upload Work Samples
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[9]/div/div[2]/section/div/label/div/span/i")]
+        [FindsBy(How = How.XPath, Using = "//div[@class='ui grid']//i[1]")]
         private IWebElement workSampleBtn { get; set; }
         //Choose Active
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[10]/div[2]/div/div[1]/div/input")]
+        [FindsBy(How = How.XPath, Using = "(//input[@name='isActive'])[1]")]
         private IWebElement active { get; set; }
         //Click on Save button
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[11]/div/input[1]")]
+        [FindsBy(How = How.XPath, Using = "//div[contains(@class,'sixteen wide')]//input[1]")]
         private IWebElement saveBtn { get; set; }
-        //Click on Manage Listings Tab
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profile-section']/div/section[1]/div/a[3]")]
-        private IWebElement maListings { get; set; }
-        //Click on view icon
-        [FindsBy(How = How.XPath, Using = "//*[@id='listing-management-section']/div[2]/div[1]/table/tbody/tr[1]/td[8]/i[1]")]
-        private IWebElement viewIcon { get; set; }
-        //Click on edit icon
-        [FindsBy(How = How.XPath, Using = "//*[@id='listing-management-section']/div[2]/div[1]/table/tbody/tr[1]/td[8]/i[2]")]
-        private IWebElement editIcon { get; set; }
-        //Click on delete icon
-        [FindsBy(How = How.XPath, Using = "//*[@id='listing-management-section']/div[2]/div[1]/table/tbody/tr[1]/td[8]/i[3]")]
-        private IWebElement deleteIcon { get; set; }
-        //Click on IsActive
-        [FindsBy(How = How.XPath, Using = "//*[@id='listing-management-section']/div[2]/div[1]/table/tbody/tr[1]/td[7]/div/input")]
-        private IWebElement isActive { get; set; }
         #endregion
 
         internal void AddShareSkill()
         {
             //Populate the Excel Sheet
             GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "ShareSkill");
-            Thread.Sleep(1000);
 
+            string mainCat = GlobalDefinitions.ExcelLib.ReadData(2, "Category");
+            string subCat = GlobalDefinitions.ExcelLib.ReadData(2, "SubCategory");
+
+            Thread.Sleep(1000);
             // Click the button Share Skill
             shareSkillBtn.Click();
 
@@ -99,11 +88,19 @@ namespace MarsFramework.Pages
             Thread.Sleep(500);
             //Choose Category
             category.Click();
+            IWebElement selectCat = GlobalDefinitions.driver.FindElement(By.Name("categoryId"));
+            SelectElement setCat = new SelectElement(selectCat);
+            setCat.SelectByText(mainCat);
             Thread.Sleep(1000);
-            categoryOpts.Click();
+            //Choose SubCategory
+            subCategory.Click();
+            IWebElement selectSubCat = GlobalDefinitions.driver.FindElement(By.Name("subcategoryId"));
+            SelectElement setSubCat = new SelectElement(selectSubCat);
+            setSubCat.SelectByText(subCat);
             Thread.Sleep(500);
             //Add Tag
             tag.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Tags"));
+            System.Windows.Forms.SendKeys.SendWait("{Enter}");
             //Choose Service Type
             serviceType.Click();
             Thread.Sleep(1000);
@@ -111,8 +108,8 @@ namespace MarsFramework.Pages
             locationType.Click();
             Thread.Sleep(1000);
             //Choose Available Days
-            startDate.SendKeys("2019-05-30");
-            endDate.SendKeys("2019-08-13");
+            startDate.SendKeys("2020-05-30");
+            endDate.SendKeys("2020-08-13");
             //Choose Available Time - 10:00am to 16:00pm on Mon - Thu
             for (int i = 3; i < 7; i++)
             {
@@ -128,11 +125,12 @@ namespace MarsFramework.Pages
             skillTrade.Click();
             //Enter Skill-Exchange
             skillExchange.SendKeys(GlobalDefinitions.ExcelLib.ReadData(3, "Skill-Exchange"));
+            System.Windows.Forms.SendKeys.SendWait("{Enter}");
             //Upload the file
             workSampleBtn.Click();
             Thread.Sleep(2000);
             //Please make a txt file and change the path for you
-            System.Windows.Forms.SendKeys.SendWait(@"C:\Users\HarrisVicky\Desktop\fortesting.txt");
+            System.Windows.Forms.SendKeys.SendWait(@"C:\Users\harri\Documents\fortesting.txt");
             System.Windows.Forms.SendKeys.SendWait("{Enter}");
             //Choose Active
             active.Click();

@@ -19,19 +19,19 @@ namespace MarsFramework.Pages
 
         #region  Initialize Web Elements 
         //Finding the Sign Link
-        [FindsBy(How = How.XPath, Using = "//*[@id='home']/div/div/div[1]/div/a")]
+        [FindsBy(How = How.XPath, Using = "//div[@class='right item']//a[1]")]
         private IWebElement SignIntab { get; set; }
 
         // Finding the Email Field
-        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/div/div[1]/div/div[1]/input")]
+        [FindsBy(How = How.XPath, Using = "//input[@placeholder='Email address']")]
         private IWebElement Email { get; set; }
 
         //Finding the Password Field
-        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/div/div[1]/div/div[2]/input")]
+        [FindsBy(How = How.XPath, Using = "//input[@placeholder='Password']")]
         private IWebElement Password { get; set; }
 
         //Finding the Login Button
-        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/div/div[1]/div/div[4]/button")]
+        [FindsBy(How = How.XPath, Using = "//button[text()='Login']")]
         private IWebElement LoginBtn { get; set; }
 
         #endregion
@@ -62,7 +62,7 @@ namespace MarsFramework.Pages
             LoginBtn.Click();
             Thread.Sleep(1500);
 
-            string text = Global.GlobalDefinitions.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/div[1]/div/a")).Text;
+            string text = Global.GlobalDefinitions.driver.FindElement(By.XPath("(//div[contains(@class,'ui secondary')]//a)[1]")).Text;
 
             if (text == "MarsLogo")
             {

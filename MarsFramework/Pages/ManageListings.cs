@@ -1,6 +1,7 @@
 ﻿using MarsFramework.Global;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
 using RelevantCodes.ExtentReports;
 using System;
 using System.Collections.Generic;
@@ -18,26 +19,41 @@ namespace MarsFramework.Pages
             PageFactory.InitElements(Global.GlobalDefinitions.driver, this);
         }
         #region  Initialize Web Elements
+        //Click on Manage Listings Tab
+        [FindsBy(How = How.XPath, Using = "(//div[contains(@class,'ui eight')]//a)[3]")]
+        private IWebElement maListings { get; set; }
+        //Click on view icon
+        [FindsBy(How = How.XPath, Using = "//*[@id='listing-management-section']/div[2]/div[1]/table/tbody/tr[1]/td[8]/i[1]")]
+        private IWebElement viewIcon { get; set; }
+        //Click on edit icon
+        [FindsBy(How = How.XPath, Using = "(//button[@class='ui button']//i)[2]")]
+        private IWebElement editIcon { get; set; }
+        //Click on delete confirmed button
+        [FindsBy(How = How.XPath, Using = "(//div[@class='actions']//button)[2]")]
+        private IWebElement deleteYes { get; set; }
+        //Click on IsActive
+        [FindsBy(How = How.XPath, Using = "//*[@id='listing-management-section']/div[2]/div[1]/table/tbody/tr[1]/td[7]/div/input")]
+        private IWebElement isActive { get; set; }
         //Add Title
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[1]/div/div[2]/div/div[1]/input")]
+        [FindsBy(How = How.XPath, Using = "(//div[@class='field  ']//input)[1]")]
         private IWebElement title { get; set; }
         //Add Description
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[2]/div/div[2]/div[1]/textarea")]
+        [FindsBy(How = How.XPath, Using = "//div[@class='field  ']//textarea[1]")]
         private IWebElement description { get; set; }
         //Add Category
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[3]/div[2]/div/div[1]/select")]
+        [FindsBy(How = How.XPath, Using = "//div[contains(@class,'five wide')]//select[1]")]
         private IWebElement category { get; set; }
-        //Choose Category dropdown
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[3]/div[2]/div/div[1]/select/option[6]")]
-        private IWebElement categoryOpts { get; set; }
+        //Choose SubCategory
+        [FindsBy(How = How.XPath, Using = "(//div[@class='fields']//select)[2]")]
+        private IWebElement subCategory { get; set; }
         //Add Tag
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[4]/div[2]/div/div/div/div/input")]
+        [FindsBy(How = How.XPath, Using = "(//div[@class='ReactTags__tagInput']//input)[1]")]
         private IWebElement tag { get; set; }
         //Add Service Type
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[5]/div[2]/div[1]/div[1]/div/input")]
+        [FindsBy(How = How.XPath, Using = "(//div[contains(@class,'ui radio')]//input)[2]")]
         private IWebElement serviceType { get; set; }
         //Add Location Type
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[6]/div[2]/div/div[1]/div/input")]
+        [FindsBy(How = How.XPath, Using = "(//div[contains(@class,'ui radio')]//input)[3]")]
         private IWebElement locationType { get; set; }
         //Add Start date
         [FindsBy(How = How.CssSelector, Using = "#service-listing-section > div.ui.container > div > form > div:nth-child(7) > div.twelve.wide.column > div > div:nth-child(1) > div:nth-child(2) > input[type='date']")]
@@ -46,35 +62,20 @@ namespace MarsFramework.Pages
         [FindsBy(How = How.CssSelector, Using = "#service-listing-section > div.ui.container > div > form > div:nth-child(7) > div.twelve.wide.column > div > div:nth-child(1) > div:nth-child(4) > input[type='date']")]
         private IWebElement endDate { get; set; }
         //Add Skill Trade
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[8]/div[2]/div/div[1]/div/input")]
+        [FindsBy(How = How.XPath, Using = "(//div[contains(@class,'ui radio')]//input)[5]")]
         private IWebElement skillTrade { get; set; }
         //Add Skill Exchange
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[8]/div[4]/div/div/div/div/div/input")]
+        [FindsBy(How = How.XPath, Using = "(//div[@class='ReactTags__tagInput']//input)[2]")]
         private IWebElement skillExchange { get; set; }
         //Upload Work Samples
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[9]/div/div[2]/section/div/label/div/span/i")]
+        [FindsBy(How = How.XPath, Using = "//div[@class='ui grid']//i[1]")]
         private IWebElement workSampleBtn { get; set; }
         //Choose Active
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[10]/div[2]/div/div[1]/div/input")]
+        [FindsBy(How = How.XPath, Using = "(//input[@name='isActive'])[1]")]
         private IWebElement active { get; set; }
         //Click on Save button
-        [FindsBy(How = How.XPath, Using = "//*[@id='service-listing-section']/div[2]/div/form/div[11]/div/input[1]")]
+        [FindsBy(How = How.XPath, Using = "//div[contains(@class,'sixteen wide')]//input[1]")]
         private IWebElement saveBtn { get; set; }
-        //Click on Manage Listings Tab
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profile-section']/div/section[1]/div/a[3]")]
-        private IWebElement maListings { get; set; }
-        //Click on view icon
-        [FindsBy(How = How.XPath, Using = "//*[@id='listing-management-section']/div[2]/div[1]/table/tbody/tr[1]/td[8]/i[1]")]
-        private IWebElement viewIcon { get; set; }
-        //Click on edit icon
-        [FindsBy(How = How.XPath, Using = "//*[@id='listing-management-section']/div[2]/div[1]/table/tbody/tr[1]/td[8]/i[2]")]
-        private IWebElement editIcon { get; set; }
-        //Click on delete icon
-        [FindsBy(How = How.XPath, Using = "//*[@id='listing-management-section']/div[2]/div[1]/table/tbody/tr[1]/td[8]/i[3]")]
-        private IWebElement deleteIcon { get; set; }
-        //Click on IsActive
-        [FindsBy(How = How.XPath, Using = "//*[@id='listing-management-section']/div[2]/div[1]/table/tbody/tr[1]/td[7]/div/input")]
-        private IWebElement isActive { get; set; }
         #endregion
 
         internal void ViewShareSkill()
@@ -92,16 +93,40 @@ namespace MarsFramework.Pages
         {
             //Populate the Excel Sheet
             GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "ShareSkill");
+            string mainCat = GlobalDefinitions.ExcelLib.ReadData(3, "Category");
+            string subCat = GlobalDefinitions.ExcelLib.ReadData(3, "SubCategory");
+
             Thread.Sleep(1000);
             //Click on ManageListings Tab
             maListings.Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(4000);
             //Click on edit icon
+            //Delete a Share skill
+            IWebElement tableElement = GlobalDefinitions.driver.FindElement(By.XPath("//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody"));
+            IList<IWebElement> tableRow = tableElement.FindElements(By.TagName("tr"));
+            IList<IWebElement> rowTD;
+            int j = 1;
+
+            foreach (IWebElement row in tableRow)
+            {
+
+                rowTD = row.FindElements(By.TagName("td"));
+                if (rowTD[2].Text.Equals("Test Analyst"))
+                {
+                    IWebElement delete = GlobalDefinitions.driver.FindElement(By.XPath("//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[" + j + "]/td[8]/div/button[3]/i"));
+                    delete.Click();
+                    deleteYes.Click();
+
+                }
+                j++;
+
+            }
             editIcon.Click();
             Thread.Sleep(1000);
 
             //<---------------------------- Edit Share Skill ---------------------------->
 
+            Thread.Sleep(1000);
             //Add Title
             title.SendKeys(GlobalDefinitions.ExcelLib.ReadData(3, "Title"));
             Thread.Sleep(500);
@@ -110,11 +135,19 @@ namespace MarsFramework.Pages
             Thread.Sleep(500);
             //Choose Category
             category.Click();
+            IWebElement selectCat = GlobalDefinitions.driver.FindElement(By.Name("categoryId"));
+            SelectElement setCat = new SelectElement(selectCat);
+            setCat.SelectByText(mainCat);
             Thread.Sleep(1000);
-            categoryOpts.Click();
+            //Choose SubCategory
+            subCategory.Click();
+            IWebElement selectSubCat = GlobalDefinitions.driver.FindElement(By.Name("subcategoryId"));
+            SelectElement setSubCat = new SelectElement(selectSubCat);
+            setSubCat.SelectByText(subCat);
             Thread.Sleep(500);
             //Add Tag
             tag.SendKeys(GlobalDefinitions.ExcelLib.ReadData(3, "Tags"));
+            System.Windows.Forms.SendKeys.SendWait("{Enter}");
             //Choose Service Type
             serviceType.Click();
             Thread.Sleep(1000);
@@ -122,8 +155,8 @@ namespace MarsFramework.Pages
             locationType.Click();
             Thread.Sleep(1000);
             //Choose Available Days
-            startDate.SendKeys("2019-05-30");
-            endDate.SendKeys("2019-08-13");
+            startDate.SendKeys("2020-05-30");
+            endDate.SendKeys("2020-08-13");
             //Choose Available Time - 10:00am to 16:00pm on Mon - Thu
             for (int i = 3; i < 7; i++)
             {
@@ -139,22 +172,24 @@ namespace MarsFramework.Pages
             skillTrade.Click();
             //Enter Skill-Exchange
             skillExchange.SendKeys(GlobalDefinitions.ExcelLib.ReadData(3, "Skill-Exchange"));
+            System.Windows.Forms.SendKeys.SendWait("{Enter}");
             //Upload the file
             workSampleBtn.Click();
             Thread.Sleep(2000);
             //Please make a txt file and change the path for you
-            System.Windows.Forms.SendKeys.SendWait(@"C:\Users\HarrisVicky\Desktop\fortesting.txt");
+            System.Windows.Forms.SendKeys.SendWait(@"C:\Users\harri\Documents\fortesting.txt");
             System.Windows.Forms.SendKeys.SendWait("{Enter}");
             //Choose Active
             active.Click();
             //Click on Save button
             saveBtn.Click();
+            Thread.Sleep(3000);
 
             //Check if user is able to search edited share skill or not
             for (int i = 1; i <= 100; i++)
             {
                 string ExpectedName = "Edit1";
-                string ActualName = GlobalDefinitions.driver.FindElement(By.XPath("//*[@id='listing-management-section']/div[2]/div[1]/table/tbody/tr[" + i + "]/td[3]")).Text;
+                string ActualName = GlobalDefinitions.driver.FindElement(By.XPath("//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr["+i+"]/td[3]")).Text;
                 Thread.Sleep(500);
                 if (ExpectedName == ActualName)
                 {
@@ -170,24 +205,52 @@ namespace MarsFramework.Pages
 
         internal void DeleteShareSkill()
         {
-            Thread.Sleep(1000);
+            int i = 1;
+            bool exitOuterLoop = false;
+
             //Click on ManageListings Tab
-            maListings.Click();
             Thread.Sleep(1000);
+            maListings.Click();
+            Thread.Sleep(5000);
+
             //Delete a Share skill
-            for (int i = 1; i <= 100; i++)
+            IWebElement tableElement = GlobalDefinitions.driver.FindElement(By.XPath("//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody"));
+            IList<IWebElement> tableRow = tableElement.FindElements(By.TagName("tr"));
+            IList<IWebElement> rowTD;
+
+
+            for (int pageNum = 2; pageNum <= 1000; pageNum++)
             {
-                bool disPlayed = GlobalDefinitions.driver.FindElement(By.XPath("//*[@id='listing-management-section']/div[2]/div[1]/table/tbody/tr[" + i + "]/td[3]")).Displayed;
-                Thread.Sleep(500);
-                if (disPlayed)
+                foreach (IWebElement row in tableRow)
                 {
-                    deleteIcon.Click();
-                    Base.test.Log(LogStatus.Info, "Deleted a shareskill successfully");
-                    break;
+
+                    rowTD = row.FindElements(By.TagName("td"));
+                    if (i > 5)
+                    {
+                        i = 1;
+                    }
+                    if (rowTD[2].Text.Equals("2"))
+                    {
+                        Console.WriteLine(i);
+                        IWebElement delete = GlobalDefinitions.driver.FindElement(By.XPath("//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[" + i + "]/td[8]/div/button[3]/i"));
+                        delete.Click();
+                        deleteYes.Click();
+                        //Exit Outer Loop
+                        exitOuterLoop = true;
+                        break;
+                    }
+                    i++;
+                }
+                if (exitOuterLoop == false)
+                {
+                    Thread.Sleep(2000);
+                    //Move to Next page
+                    GlobalDefinitions.driver.FindElement(By.XPath("(//div[contains(@class,'ui buttons')]//button)["+ pageNum +"]")).Click();
+                    Thread.Sleep(3000);
                 }
                 else
                 {
-
+                    break;
                 }
             }
         }
